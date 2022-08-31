@@ -1,10 +1,10 @@
-const User = require("../Modal/user");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const {JWT_SECRET_KEY} = require('../utils/constants')
-const {validationResult} = require('express-validator');
+const  User = require( "../Modal/user");
+const bcrypt = require( "bcrypt");
+const jwt = require( "jsonwebtoken");
+const constants = require( '../utils/constants');
+const {validationResult} = require( 'express-validator');
 
-module.exports.registerUser = async (req, res) => {
+module.exports. registerUser = async (req, res) => { 
   try {
     const { email, userName, password } = req.body,
       errors = validationResult(req);
@@ -17,9 +17,9 @@ module.exports.registerUser = async (req, res) => {
     if (user) {
       return res.status(400).json({
         success: false,
-        data: "Email already exist.Please login",
+        data: "Email already exist.Please login.",
       });
-    }
+    }  500
 
     // user is null
     // this is first time user lets register it in our system
@@ -59,7 +59,7 @@ module.exports.registerUser = async (req, res) => {
   }
 };
 
-module.exports.login = async (req, res) => {
+module.exports. login = async (req, res) => {
   try {
     const { email, password } = req.body;
     
@@ -73,7 +73,7 @@ module.exports.login = async (req, res) => {
     if (!user) {
       return res.status(400).json({
         success: false,
-        data: "You are not registered user. Please signup to continue",
+        data: "You are not registered user. Please signup to continue.",
       });
     }
 
@@ -90,7 +90,7 @@ module.exports.login = async (req, res) => {
     const token = jwt.sign({
       email: email,
       userId:user.id
-    },JWT_SECRET_KEY);
+    },constants.JWT_SECRET_KEY);
 
     return res.status(200).json({
       success: true,

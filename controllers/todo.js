@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Todo = require("../Modal/todo");
+const Todo = require('../Modal/todo.js');
 
-module.exports.getTodo = async (req, res) => {
+ module.exports.getTodo = async (req, res) => {
   try {
     // I have to fetch all todos from databasse And send it back
     const todos = await Todo.find({ user: req.body.userId });

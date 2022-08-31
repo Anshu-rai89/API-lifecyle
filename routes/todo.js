@@ -1,21 +1,25 @@
 const express = require("express");
-const router = express.Router();
-const {body,param} = require('express-validator');
-const todoController = require("../controllers/todo");
-const { verifyToken } = require("../utils");
+const { body, param } = require("express-validator");
+const { verifyToken } = require ("../utils");
+const {updateTodo,deleteTodo,createTodo,getTodo} = require("../controllers/todo");
+const todoRouter = express.Router();
 
-router.get("/", verifyToken,todoController.getTodo);
-router.post("/", verifyToken,
-    body("text").isEmpty(),
-    body("userId").isEmpty(),
-    todoController.createTodo);
-router.put(
+todoRouter.get("/", verifyToken, getTodo);
+todoRouter.post(
+  "/",
+  verifyToken,
+  body("text").isEmpty(),
+  body("userId").isEmpty(),
+  createTodo
+);
+todoRouter.put(
   "/:id",
   verifyToken,
   body("text").isEmpty(),
   body("userId").isEmpty(),
- param('id').isMongoId(),
-  todoController.updateTodo
+  param("id").isMongoId(),
+  updateTodo
 );
-router.delete("/:id", verifyToken, todoController.deleteTodo);
-module.exports = router;
+todoRouter.delete("/:id", verifyToken, deleteTodo);
+
+module.exports= todoRouter;
