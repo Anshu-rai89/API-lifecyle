@@ -1,10 +1,8 @@
 const express = require("express");
-const router = express.Router();
-const postController = require("../controllers/postController");
+const todo = require("./todo");
+const userRoute = require('./user.js');
+const  router = express.Router();
 
-router.get("/", postController.home);
-router.post("/post", postController.createPost);
-
-router.use("/todo", require("./todo"));
-router.use("/user", require("./user"));
-module.exports = router;
+router.use("/todo", todo);
+router.use("/user", userRoute);
+module.exports= router;

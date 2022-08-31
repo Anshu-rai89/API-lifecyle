@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET_KEY } = require("./constants");
+const constants = require("./constants.js");
+
 module.exports.verifyToken = async (req, res, next) => {
   try {
     const token = req.headers["authorization"];
     console.log("Token", token, req.token, req.headers.authorization);
-    const decoded = await jwt.verify(token, JWT_SECRET_KEY);
+    const decoded = await jwt.verify(token, constants.JWT_SECRET_KEY);
 
     if (!decoded) {
       return res.status(403).json({
@@ -27,6 +28,3 @@ module.exports.verifyToken = async (req, res, next) => {
   }
 };
 
-/**
- * When user a login req
- */
