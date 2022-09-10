@@ -41,7 +41,7 @@ module.exports. registerUser = async (req, res) => {
         email: email,
         userId: newUser.id,
       },
-      ""
+      "secretKey"
     );
 
     return res.status(200).json({
