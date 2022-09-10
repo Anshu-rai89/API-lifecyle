@@ -4,7 +4,7 @@
   "description": "Learning to create nodejs server",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "jest --all"
   },
   "author": "Anshu",
