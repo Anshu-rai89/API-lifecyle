@@ -1,8 +1,11 @@
 const app = require('../app');
 const User = require('../Modal/user');
 const supertest = require('supertest');
+const { login } = require('../controllers/userController');
+const { render } = require('../app');
 const request = supertest(app);
 const {ObjectId} = require('mongoose').Schema.Types;
+
 describe('Test user registration flow',()=>{
     it('Test for user with invalid email id',async()=>{
         const response = await request.post('/user/register').send({

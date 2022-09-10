@@ -19,7 +19,7 @@ module.exports. registerUser = async (req, res) => {
         success: false,
         data: "Email already exist.Please login.",
       });
-    }  500
+    } 
 
     // user is null
     // this is first time user lets register it in our system
@@ -41,7 +41,7 @@ module.exports. registerUser = async (req, res) => {
         email: email,
         userId: newUser.id,
       },
-      "secretKey"
+      ""
     );
 
     return res.status(200).json({
