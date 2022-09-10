@@ -1,6 +1,8 @@
 name: Node CRUD APIs Github Action
 
-on: push
+on:
+  push:
+    branches: ['test-ci']
 jobs:
   build:
     runs-on: ubuntu-latest
